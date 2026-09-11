@@ -114,7 +114,7 @@ body {
 }
 
 
-#loader.hide {
+#loader.hidden {
     opacity: 0;
     visibility: hidden;
 }
