@@ -3112,3 +3112,206 @@ a:focus-visible {
         transition-duration: 0.01ms !important;
     }
              }
+/* =====================================================
+   24. EXTRA MOBILE POLISH
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .section {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .navbar {
+        padding: 14px 16px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-logo {
+        font-size: 17px;
+    }
+
+    .music-button {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hero {
+        min-height: 100svh;
+        padding: 110px 18px 70px;
+    }
+
+    .hero-title {
+        font-size: clamp(38px, 12vw, 58px);
+    }
+
+    .hero-subtitle {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .hero-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .ganesha-container {
+        width: min(82vw, 330px);
+        height: min(82vw, 330px);
+    }
+
+    .ganesha-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .blessing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .celebration-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .celebration-button {
+        width: min(100%, 280px);
+    }
+
+    .festival-card {
+        padding: 55px 22px;
+        border-radius: 25px;
+    }
+
+    .festival-card-decoration {
+        font-size: 23px;
+        top: 25px;
+    }
+
+    .decoration-left {
+        left: 22px;
+    }
+
+    .decoration-right {
+        right: 22px;
+    }
+
+    .festival-card h2 {
+        font-size: 36px;
+    }
+
+    .final-section {
+        min-height: 580px;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .final-symbol {
+        width: 78px;
+        height: 78px;
+        font-size: 35px;
+    }
+
+    .popup-card {
+        width: calc(100% - 30px);
+        padding: 35px 22px;
+    }
+
+    .toast {
+        left: 15px;
+        right: 15px;
+        bottom: 20px;
+        text-align: center;
+    }
+}
+
+
+/* =====================================================
+   25. TOUCH DEVICES
+===================================================== */
+
+@media (hover: none) {
+
+    .hero-button:hover,
+    .celebration-button:hover,
+    .blessing-card:hover,
+    .final-button:hover {
+        transform: none;
+    }
+
+    .blessing-card:active {
+        transform: scale(0.98);
+    }
+
+    button {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+
+/* =====================================================
+   26. SELECTION
+===================================================== */
+
+::selection {
+    background: rgba(245, 199, 106, 0.28);
+    color: #fff6dc;
+}
+
+
+/* =====================================================
+   27. SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #120704;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        180deg,
+        #e8b653,
+        #6f260f
+    );
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #f5c76a;
+}
+
+
+/* =====================================================
+   28. FINAL GLOW
+===================================================== */
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9997;
+
+    box-shadow:
+        inset 0 0 120px rgba(0, 0, 0, 0.45),
+        inset 0 0 30px rgba(245, 199, 106, 0.025);
+}
+
+
+/* =====================================================
+   29. END
+===================================================== */
