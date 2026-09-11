@@ -898,11 +898,3 @@ console.log(
     "%cPremium Ganesh Chaturthi Website Loaded",
     "font-size:14px;"
 );
-/* =====================================================
-   26. CONSOLE
-===================================================== */
-
-console.log(
-    "%c🙏 GANPATI BAPPA MORIYA 🙏",
-    "font-size:20px;font-weight:bold;"
-);
