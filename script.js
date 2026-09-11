@@ -41,7 +41,7 @@ const toastMessage =
     document.getElementById("toastMessage");
 
 const petalsContainer =
-    document.getElementById("petals");
+    document.getElementById("petals-container");
 
 const canvas =
     document.getElementById("particleCanvas");
