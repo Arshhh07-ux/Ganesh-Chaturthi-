@@ -1,1 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#120604">
+
+    <meta name="description"
+          content="A premium digital celebration of Ganesh Chaturthi — Ganpati Bappa Morya!">
+
+    <title>Ganpati Bappa Morya 🙏 | Ganesh Chaturthi</title>
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- =====================================================
+         ICONS
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<!-- =========================================================
+     LOADING SCREEN
+========================================================= -->
+
+<div id="loader">
+
+    <div class="loader-content">
+
+        <div class="loader-om">ॐ</div>
+
+        <div class="loader-line"></div>
+
+        <p>Preparing the divine celebration...</p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     BACKGROUND EFFECTS
+========================================================= -->
+
+<div class="background-effects">
+
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="glow glow-three"></div>
+
+</div>
+
+
+<!-- =========================================================
+     PARTICLE CANVAS
+========================================================= -->
+
+<canvas id="particleCanvas"></canvas>
+
+
+<!-- =========================================================
+     FLOATING PETALS
+========================================================= -->
+
+<div id="petals-container"></div>
+
+
+<!-- =========================================================
+     MAIN WEBSITE
+========================================================= -->
+
+<main id="mainWebsite">
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <header class="navbar" id="navbar">
+
+        <div class="nav-logo">
+
+            <span class="logo-symbol">ॐ</span>
+
+            <span class="logo-text">
+                Ganpati
+            </span>
+
+        </div>
+
+
+        <nav class="nav-links">
+
+            <a href="#home" class="nav-link active">
+                Home
+            </a>
+
+            <a href="#blessings" class="nav-link">
+                Blessings
+            </a>
+
+            <a href="#celebration" class="nav-link">
+                Celebration
+            </a>
+
+            <a href="#message" class="nav-link">
+                Message
+            </a>
+
+        </nav>
+
+
+        <button
+            class="music-button"
+            id="musicButton"
+            aria-label="Toggle devotional music">
+
+            <i class="fa-solid fa-volume-xmark"></i>
+
+        </button>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO / HOME
+    ====================================================== -->
+
+    <section class="hero-section" id="home">
+
+
+        <!-- Decorative mandala -->
+
+        <div class="mandala mandala-one">
+            ✦
+        </div>
+
+        <div class="mandala mandala-two">
+            ✦
+        </div>
+
+
+        <!-- Top small blessing -->
+
+        <div class="hero-top-text">
+
+            <span class="small-line"></span>
+
+            <span>
+                ॐ श्री गणेशाय नमः
+            </span>
+
+            <span class="small-line"></span>
+
+        </div>
+
+
+        <!-- Main heading -->
+
+        <h1 class="hero-title">
+
+            <span class="title-small">
+                Welcome to the
+            </span>
+
+            <span class="title-main">
+                Ganesh Chaturthi
+            </span>
+
+            <span class="title-script">
+                Celebration
+            </span>
+
+        </h1>
+
+
+        <!-- Subtitle -->
+
+        <p class="hero-description">
+
+            May Lord Ganesha fill your life with
+            <span>happiness</span>,
+            <span>peace</span>,
+            <span>success</span>
+            and endless blessings.
+
+        </p>
+
+
+        <!-- =================================================
+             GANESHA VISUAL
+        ================================================== -->
+
+        <div class="ganesha-stage">
+
+
+            <!-- Outer divine rings -->
+
+            <div class="divine-ring ring-one"></div>
+
+            <div class="divine-ring ring-two"></div>
+
+            <div class="divine-ring ring-three"></div>
+
+
+            <!-- Golden halo -->
+
+            <div class="ganesha-halo"></div>
+
+
+            <!-- Ganesh Ji container -->
+
+            <div class="ganesha-container" id="ganeshaContainer">
+
+                <!--
+
+                    IMPORTANT:
+
+                    Replace the image URL below with your
+                    preferred Ganesh Ji image if required.
+
+                -->
+
+                <img
+                    class="ganesha-image"
+                    id="ganeshaImage"
+                    src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=900&q=90"
+                    alt="Lord Ganesha">
+
+            </div>
+
+
+            <!-- Divine glow beneath Ganesh Ji -->
+
+            <div class="ground-glow"></div>
+
+
+            <!-- Floating Om -->
+
+            <div class="floating-symbol symbol-one">
+                ॐ
+            </div>
+
+            <div class="floating-symbol symbol-two">
+                ॐ
+            </div>
+
+            <div class="floating-symbol symbol-three">
+                ॐ
+            </div>
+
+
+        </div>
+
+
+        <!-- Hero buttons -->
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-button"
+                id="enterCelebration">
+
+                <span class="button-icon">
+                    🙏
+                </span>
+
+                <span>
+                    Enter Celebration
+                </span>
+
+                <span class="button-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </button>
+
+
+            <button
+                class="secondary-button"
+                id="blessingsButton">
+
+                <i class="fa-solid fa-hands-praying"></i>
+
+                Receive Blessings
+
+            </button>
+
+        </div>
+
+
+        <!-- Scroll indicator -->
+
+        <div class="scroll-indicator">
+
+            <span>
+                Scroll to explore
+            </span>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DIVINE MESSAGE
+    ====================================================== -->
+
+    <section class="message-section section" id="message">
+
+        <div class="section-heading">
+
+            <span class="section-eyebrow">
+                ✦ A Divine Beginning ✦
+            </span>
+
+            <h2>
+                गणपति बप्पा
+                <span>मोरया</span>
+            </h2>
+
+            <p>
+                When Bappa enters our homes,
+                He brings more than celebration.
+                He brings hope, positivity and new beginnings.
+            </p>
+
+        </div>
+
+
+        <div class="quote-card">
+
+            <div class="quote-symbol">
+                “
+            </div>
+
+            <p class="quote-text">
+
+                May Lord Ganesha remove every obstacle
+                from your path and bless you with wisdom,
+                prosperity, good health and happiness.
+
+            </p>
+
+            <div class="quote-divider"></div>
+
+            <p class="quote-mantra">
+                ॐ गं गणपतये नमः
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         BLESSINGS SECTION
+    ====================================================== -->
+
+    <section class="blessings-section section" id="blessings">
+
+
+        <div class="section-heading">
+
+            <span class="section-eyebrow">
+                ✦ Bappa's Blessings ✦
+            </span>
+
+            <h2>
+                May Your Life Be Filled With
+                <span>Divine Grace</span>
+            </h2>
+
+        </div>
+
+
+        <div class="blessing-grid">
+
+
+            <!-- Wisdom -->
+
+            <article class="blessing-card">
+
+                <div class="card-glow"></div>
+
+                <div class="blessing-icon">
+                    🪷
+                </div>
+
+                <h3>
+                    Wisdom
+                </h3>
+
+                <p>
+                    May Bappa bless you with
+                    knowledge, clarity and wisdom
+                    to choose the right path.
+                </p>
+
+            </article>
+
+
+            <!-- Prosperity -->
+
+            <article class="blessing-card">
+
+                <div class="card-glow"></div>
+
+                <div class="blessing-icon">
+                    🪙
+                </div>
+
+                <h3>
+                    Prosperity
+                </h3>
+
+                <p>
+                    May your home always be filled
+                    with abundance, success and
+                    prosperity.
+                </p>
+
+            </article>
+
+
+            <!-- Happiness -->
+
+            <article class="blessing-card">
+
+                <div class="card-glow"></div>
+
+                <div class="blessing-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    Happiness
+                </h3>
+
+                <p>
+                    May every day bring smiles,
+                    love, peace and beautiful
+                    memories to your life.
+                </p>
+
+            </article>
+
+
+            <!-- Protection -->
+
+            <article class="blessing-card">
+
+                <div class="card-glow"></div>
+
+                <div class="blessing-icon">
+                    🛕
+                </div>
+
+                <h3>
+                    Protection
+                </h3>
+
+                <p>
+                    May Vighnaharta remove every
+                    obstacle and protect you
+                    wherever you go.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CELEBRATION SECTION
+    ====================================================== -->
+
+    <section class="celebration-section section" id="celebration">
+
+
+        <div class="celebration-background">
+
+            <div class="light-beam beam-one"></div>
+            <div class="light-beam beam-two"></div>
+            <div class="light-beam beam-three"></div>
+
+        </div>
+
+
+        <div class="section-heading celebration-heading">
+
+            <span class="section-eyebrow">
+                ✦ The Celebration Begins ✦
+            </span>
+
+            <h2>
+                Bappa Has
+                <span>Arrived!</span>
+            </h2>
+
+            <p>
+                Let the lights shine brighter,
+                the hearts become happier,
+                and the celebrations begin.
+            </p>
+
+        </div>
+
+
+        <!-- Celebration controls -->
+
+        <div class="celebration-controls">
+
+            <button
+                class="celebration-button"
+                id="flowerButton">
+
+                <span class="celebration-button-icon">
+                    🌸
+                </span>
+
+                Shower Flowers
+
+            </button>
+
+
+            <button
+                class="celebration-button"
+                id="confettiButton">
+
+                <span class="celebration-button-icon">
+                    🎊
+                </span>
+
+                Celebrate
+
+            </button>
+
+
+            <button
+                class="celebration-button"
+                id="blessingPopupButton">
+
+                <span class="celebration-button-icon">
+                    🙏
+                </span>
+
+                Bappa's Blessing
+
+            </button>
+
+        </div>
+
+
+        <!-- Mantra display -->
+
+        <div class="mantra-display">
+
+            <div class="mantra-glow"></div>
+
+            <span class="mantra-small">
+                DIVINE MANTRA
+            </span>
+
+            <h3>
+                ॐ गं गणपतये नमः
+            </h3>
+
+            <p>
+                Om Gam Ganapataye Namaha
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PREMIUM COUNTDOWN / FESTIVAL CARD
+    ====================================================== -->
+
+    <section class="festival-section section">
+
+
+        <div class="festival-card">
+
+
+            <div class="festival-card-decoration decoration-left">
+                🪔
+            </div>
+
+            <div class="festival-card-decoration decoration-right">
+                🪔
+            </div>
+
+
+            <span class="festival-label">
+                THE FESTIVAL OF NEW BEGINNINGS
+            </span>
+
+
+            <h2>
+                Ganesh
+                <span>Chaturthi</span>
+            </h2>
+
+
+            <div class="festival-divider">
+
+                <span>✦</span>
+
+                <div></div>
+
+                <span>ॐ</span>
+
+                <div></div>
+
+                <span>✦</span>
+
+            </div>
+
+
+            <p>
+                Celebrate faith.
+                Celebrate family.
+                Celebrate new beginnings.
+            </p>
+
+
+            <div class="festival-mantra">
+                गणपति बप्पा मोरया!
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FINAL BLESSING
+    ====================================================== -->
+
+    <section class="final-section section">
+
+
+        <div class="final-symbol">
+            ॐ
+        </div>
+
+
+        <h2>
+            May Bappa
+            <span>Always Be With You</span>
+        </h2>
+
+
+        <p>
+            May every obstacle become an opportunity,
+            every dream become a reality,
+            and every moment become a blessing.
+        </p>
+
+
+        <div class="final-mantra">
+
+            <span>🙏</span>
+
+            गणपति बप्पा मोरया
+
+            <span>🙏</span>
+
+        </div>
+
+
+        <button
+            class="final-button"
+            id="finalCelebrateButton">
+
+            Celebrate With Bappa
+            <i class="fa-solid fa-sparkles"></i>
+
+        </button>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+
+        <div class="footer-om">
+            ॐ
+        </div>
+
+
+        <h3>
+            Ganpati Bappa Morya
+        </h3>
+
+
+        <p>
+            Made with devotion, love &amp; blessings.
+        </p>
+
+
+        <div class="footer-divider"></div>
+
+
+        <p class="copyright">
+            © <span id="year"></span>
+            Ganesh Chaturthi Celebration
+        </p>
+
+
+    </footer>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     BLESSING POPUP
+========================================================= -->
+
+<div
+    class="popup-overlay"
+    id="blessingPopup"
+    aria-hidden="true">
+
+
+    <div class="blessing-popup">
+
+
+        <button
+            class="popup-close"
+            id="closePopup"
+            aria-label="Close">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="popup-symbol">
+            🙏
+        </div>
+
+
+        <span class="popup-small">
+            A SPECIAL MESSAGE FROM BAPPA
+        </span>
+
+
+        <h2>
+            गणपति बप्पा
+            <span>मोरया!</span>
+        </h2>
+
+
+        <p>
+            May Lord Ganesha bless you and your
+            family with happiness, prosperity,
+            wisdom, peace and good health.
+        </p>
+
+
+        <div class="popup-mantra">
+            ॐ गं गणपतये नमः
+        </div>
+
+
+        <button
+            class="popup-action"
+            id="popupCelebrate">
+
+            ✨ Celebrate ✨
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     TOAST MESSAGE
+========================================================= -->
+
+<div
+    class="toast"
+    id="toast">
+
+    <span class="toast-icon">
+        🙏
+    </span>
+
+    <span id="toastMessage">
+        Ganpati Bappa Morya!
+    </span>
+
+</div>
+
+
+
+<!-- =========================================================
+     DEVOTIONAL AUDIO
+     
+     Replace "ganesh-mantra.mp3" with your own audio file
+     if you want local music.
+
+     Example:
+     <audio id="devotionalAudio" src="ganesh-mantra.mp3"></audio>
+========================================================= -->
+
+<audio
+    id="devotionalAudio"
+    loop
+    preload="none">
+
+</audio>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="script.js"></script>
+
+
+</body>
+      </html>
