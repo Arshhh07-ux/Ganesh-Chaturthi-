@@ -1282,4 +1282,851 @@ section {
 /* =========================================================
    FESTIVAL CARD
 ========================================================= */
-   
+   .festival-section {
+    position: relative;
+    padding-top: 70px;
+    padding-bottom: 120px;
+}
+
+/* =========================================================
+   FESTIVAL CARD
+========================================================= */
+
+.festival-card {
+    position: relative;
+
+    width: min(1000px, 100%);
+    margin: 0 auto;
+
+    padding:
+        75px clamp(25px, 7vw, 90px);
+
+    text-align: center;
+
+    border-radius: 36px;
+
+    border:
+        1px solid rgba(245, 199, 106, 0.25);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(121, 37, 9, 0.30),
+            rgba(255, 214, 125, 0.035)
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.38);
+
+    overflow: hidden;
+}
+
+/* Inner golden frame */
+
+.festival-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border:
+        1px solid rgba(245, 199, 106, 0.09);
+
+    border-radius: 27px;
+
+    pointer-events: none;
+}
+
+/* Top light */
+
+.festival-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: -120px;
+    left: 50%;
+
+    width: 300px;
+    height: 220px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(245, 199, 106, 0.10);
+
+    filter: blur(65px);
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   FESTIVAL DECORATIONS
+========================================================= */
+
+.festival-card-decoration {
+    position: absolute;
+
+    top: 38px;
+
+    z-index: 2;
+
+    font-size: 30px;
+
+    opacity: 0.6;
+
+    filter:
+        drop-shadow(
+            0 0 12px rgba(245, 199, 106, 0.4)
+        );
+
+    animation:
+        decorationFloat 4s ease-in-out infinite;
+}
+
+.decoration-left {
+    left: 45px;
+}
+
+.decoration-right {
+    right: 45px;
+
+    animation-delay: 1s;
+}
+
+/* =========================================================
+   FESTIVAL TEXT
+========================================================= */
+
+.festival-label {
+    position: relative;
+
+    z-index: 3;
+
+    color:
+        rgba(255, 220, 150, 0.62);
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+}
+
+.festival-card h2 {
+    position: relative;
+
+    z-index: 3;
+
+    margin-top: 18px;
+
+    font-family: "Cinzel", serif;
+
+    font-size:
+        clamp(36px, 6vw, 68px);
+
+    line-height: 1.15;
+
+    font-weight: 500;
+
+    color: var(--cream);
+
+    text-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.35);
+}
+
+.festival-card h2 span {
+    color: var(--gold);
+
+    text-shadow:
+        0 0 25px rgba(231, 174, 67, 0.18);
+}
+
+/* =========================================================
+   FESTIVAL DIVIDER
+========================================================= */
+
+.festival-divider {
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 27px auto;
+}
+
+.festival-divider div {
+    width: 75px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(245, 199, 106, 0.55),
+            transparent
+        );
+}
+
+.festival-divider span {
+    color: var(--gold);
+
+    font-size: 16px;
+
+    text-shadow:
+        0 0 15px rgba(245, 199, 106, 0.35);
+}
+
+/* =========================================================
+   FESTIVAL DESCRIPTION
+========================================================= */
+
+.festival-card p {
+    position: relative;
+
+    z-index: 3;
+
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    color:
+        rgba(255, 245, 220, 0.62);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+/* =========================================================
+   FESTIVAL MANTRA
+========================================================= */
+
+.festival-mantra {
+    position: relative;
+
+    z-index: 3;
+
+    margin-top: 30px;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size:
+        clamp(30px, 5vw, 47px);
+
+    color: var(--gold-light);
+
+    text-shadow:
+        0 0 25px rgba(245, 199, 106, 0.22);
+}
+
+/* =========================================================
+   FINAL SECTION
+========================================================= */
+
+.final-section {
+    position: relative;
+
+    min-height: 650px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding-top: 100px;
+    padding-bottom: 140px;
+
+    overflow: hidden;
+}
+
+.final-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 300px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(210, 126, 35, 0.06);
+
+    filter: blur(80px);
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   FINAL OM
+========================================================= */
+
+.final-symbol {
+    position: relative;
+
+    z-index: 2;
+
+    width: 95px;
+    height: 95px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 30px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(245, 199, 106, 0.32);
+
+    background:
+        rgba(245, 199, 106, 0.055);
+
+    color: var(--gold);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 43px;
+
+    box-shadow:
+        0 0 50px rgba(245, 199, 106, 0.10),
+        inset 0 0 25px rgba(245, 199, 106, 0.05);
+
+    animation:
+        finalOm 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   FINAL HEADING
+========================================================= */
+
+.final-section h2 {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 800px;
+
+    font-family: "Cinzel", serif;
+
+    font-size:
+        clamp(32px, 6vw, 65px);
+
+    line-height: 1.2;
+
+    font-weight: 500;
+}
+
+.final-section h2 span {
+    display: block;
+
+    color: var(--gold);
+
+    text-shadow:
+        0 0 25px rgba(231, 174, 67, 0.15);
+}
+
+.final-section > p {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin-top: 22px;
+
+    color:
+        rgba(255, 245, 220, 0.58);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+.final-mantra {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 30px;
+
+    color: var(--gold-light);
+
+    font-family: "Great Vibes", cursive;
+
+    font-size:
+        clamp(28px, 5vw, 44px);
+}
+
+.final-mantra span {
+    font-family: sans-serif;
+
+    font-size: 20px;
+}
+
+/* =========================================================
+   FINAL BUTTON
+========================================================= */
+
+.final-button {
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 32px;
+
+    padding:
+        16px 29px;
+
+    border: none;
+
+    border-radius: 100px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe8a7,
+            #dfa03a
+        );
+
+    color: #2b1105;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 15px 40px rgba(224, 158, 48, 0.20);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.final-button:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 20px 55px rgba(224, 158, 48, 0.34);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    position: relative;
+
+    padding:
+        35px 20px;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(245, 199, 106, 0.08);
+
+    background:
+        rgba(0, 0, 0, 0.25);
+}
+
+.footer p {
+    color:
+        rgba(255, 245, 220, 0.38);
+
+    font-size: 10px;
+
+    line-height: 1.8;
+}
+
+.footer span {
+    color:
+        rgba(245, 199, 106, 0.72);
+}
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+#blessingPopup {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0, 0, 0, 0.80);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+#blessingPopup.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.popup-card {
+    position: relative;
+
+    width: min(550px, 100%);
+
+    padding:
+        45px 30px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    border:
+        1px solid rgba(245, 199, 106, 0.28);
+
+    background:
+        linear-gradient(
+            145deg,
+            #241007,
+            #0d0502
+        );
+
+    box-shadow:
+        0 40px 120px rgba(0, 0, 0, 0.7);
+
+    transform:
+        translateY(20px)
+        scale(0.96);
+
+    transition:
+        transform 0.4s ease;
+}
+
+#blessingPopup.active .popup-card {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.close-popup {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(245, 199, 106, 0.18);
+
+    background:
+        rgba(255, 255, 255, 0.03);
+
+    color:
+        rgba(255, 245, 220, 0.75);
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+.popup-symbol {
+    font-size: 55px;
+
+    color: var(--gold);
+
+    margin-bottom: 15px;
+}
+
+.popup-card h2 {
+    font-family: "Cinzel", serif;
+
+    color: var(--gold-light);
+
+    font-size: 25px;
+}
+
+.popup-card p {
+    margin-top: 18px;
+
+    color:
+        rgba(255, 245, 220, 0.62);
+
+    font-size: 12px;
+
+    line-height: 1.9;
+}
+
+#popupCelebrate {
+    margin-top: 25px;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+#toast {
+    position: fixed;
+
+    left: 50%;
+    bottom: 30px;
+
+    z-index: 10000;
+
+    min-width: 230px;
+
+    padding:
+        13px 20px;
+
+    text-align: center;
+
+    border-radius: 100px;
+
+    border:
+        1px solid rgba(245, 199, 106, 0.20);
+
+    background:
+        rgba(20, 8, 3, 0.92);
+
+    color: var(--gold-light);
+
+    font-size: 11px;
+
+    backdrop-filter: blur(15px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translate(-50%, 30px);
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        visibility 0.35s ease;
+}
+
+#toast.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translate(-50%, 0);
+}
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+.confetti-piece {
+    position: fixed;
+
+    top: -20px;
+
+    z-index: 9998;
+
+    width: 7px;
+    height: 14px;
+
+    pointer-events: none;
+
+    animation:
+        confettiFall linear forwards;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes decorationFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes finalOm {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.07);
+    }
+}
+
+@keyframes confettiFall {
+
+    0% {
+        transform:
+            translateY(-20px)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .festival-section {
+        padding-top: 45px;
+        padding-bottom: 80px;
+    }
+
+    .festival-card {
+        padding:
+            55px 22px;
+    }
+
+    .festival-card-decoration {
+        display: none;
+    }
+
+    .festival-card h2 {
+        font-size: 39px;
+    }
+
+    .festival-divider div {
+        width: 50px;
+    }
+
+    .festival-card p {
+        font-size: 11px;
+    }
+
+    .final-section {
+        min-height: 580px;
+
+        padding-bottom: 100px;
+    }
+
+    .final-symbol {
+        width: 78px;
+        height: 78px;
+
+        font-size: 34px;
+    }
+
+    .final-section h2 {
+        font-size: 34px;
+    }
+
+    .final-section > p {
+        font-size: 11px;
+    }
+
+    .final-button {
+        width: min(320px, 100%);
+    }
+
+    .popup-card {
+        padding:
+            40px 22px;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .festival-card {
+        padding:
+            45px 17px;
+    }
+
+    .festival-card h2 {
+        font-size: 34px;
+    }
+
+    .festival-mantra {
+        font-size: 31px;
+    }
+
+    .final-section h2 {
+        font-size: 30px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
