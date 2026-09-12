@@ -477,27 +477,42 @@ document.addEventListener("DOMContentLoaded", () => {
        MUSIC BUTTON
     ===================================================== */
 
+/* MUSIC BUTTON */
+
 if (musicButton && devotionalAudio) {
-    musicButton.addEventListener("click", async () => {
 
-        try {
-            if (devotionalAudio.paused) {
-                await devotionalAudio.play();
+    musicButton.addEventListener("click", function () {
 
-                musicButton.classList.add("playing");
-                showToast("🎵 Ganpati music playing...");
-            } else {
-                devotionalAudio.pause();
+        if (devotionalAudio.paused) {
 
-                musicButton.classList.remove("playing");
-                showToast("🔇 Music paused");
-            }
+            devotionalAudio.play()
+                .then(() => {
 
-        } catch (error) {
-            console.error(error);
-            showToast("❌ Song load nahi ho raha");
+                    musicButton.classList.add("playing");
+
+                    showToast("🎵 Ganpati music playing...");
+
+                })
+                .catch((error) => {
+
+                    console.log("Audio Error:", error);
+
+                    showToast("❌ Song load nahi ho raha");
+
+                });
+
+        } else {
+
+            devotionalAudio.pause();
+
+            musicButton.classList.remove("playing");
+
+            showToast("🔇 Music paused");
+
         }
+
     });
+
 }
     /* =====================================================
        PARTICLE CANVAS
