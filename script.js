@@ -1,900 +1,871 @@
-/* =====================================================
+/* =========================================================
    GANESH CHATURTHI PREMIUM WEBSITE
-   SCRIPT.JS
-===================================================== */
+   script.js
+========================================================= */
 
-"use strict";
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const loader = document.getElementById("loader");
+    const navbar = document.getElementById("navbar");
+
+    const enterCelebration = document.getElementById("enterCelebration");
+    const blessingsButton = document.getElementById("blessingsButton");
+
+    const flowerButton = document.getElementById("flowerButton");
+    const confettiButton = document.getElementById("confettiButton");
+    const blessingPopupButton =
+        document.getElementById("blessingPopupButton");
+
+    const finalCelebrateButton =
+        document.getElementById("finalCelebrateButton");
+
+    const petalsContainer =
+        document.getElementById("petals-container");
+
+    const popup =
+        document.getElementById("blessingPopup");
+
+    const closePopup =
+        document.getElementById("closePopup");
+
+    const popupCelebrate =
+        document.getElementById("popupCelebrate");
+
+    const toast =
+        document.getElementById("toast");
+
+    const toastMessage =
+        document.getElementById("toastMessage");
+
+    const musicButton =
+        document.getElementById("musicButton");
+
+    const devotionalAudio =
+        document.getElementById("devotionalAudio");
+
+    const year =
+        document.getElementById("year");
+
+    const canvas =
+        document.getElementById("particleCanvas");
 
 
-/* =====================================================
-   1. DOM ELEMENTS
-===================================================== */
+    /* =====================================================
+       YEAR
+    ===================================================== */
 
-const loader = document.getElementById("loader");
-const musicButton = document.getElementById("musicButton");
-const devotionalAudio = document.getElementById("devotionalAudio");
-
-const enterCelebration = document.getElementById("enterCelebration");
-const blessingsButton = document.getElementById("blessingsButton");
-
-const flowerButton = document.getElementById("flowerButton");
-const confettiButton = document.getElementById("confettiButton");
-const blessingPopupButton =
-    document.getElementById("blessingPopupButton");
-
-const finalCelebrateButton =
-    document.getElementById("finalCelebrateButton");
-
-const popupCelebrate =
-    document.getElementById("popupCelebrate");
-
-const blessingPopup =
-    document.getElementById("blessingPopup");
-
-const closePopup =
-    document.getElementById("closePopup");
-
-const toast =
-    document.getElementById("toast");
-
-const toastMessage =
-    document.getElementById("toastMessage");
-
-const petalsContainer =
-    document.getElementById("petals-container");
-
-const canvas =
-    document.getElementById("particleCanvas");
-
-const yearElement =
-    document.getElementById("year");
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
 
 
-/* =====================================================
-   2. PAGE LOADER
-===================================================== */
+    /* =====================================================
+       LOADER
+    ===================================================== */
 
-window.addEventListener("load", () => {
+    function hideLoader() {
 
-    setTimeout(() => {
+        if (!loader) return;
 
-        if (loader) {
+        setTimeout(() => {
             loader.classList.add("hidden");
-        }
-
-    }, 700);
-
-});
-
-
-/* =====================================================
-   3. CURRENT YEAR
-===================================================== */
-
-if (yearElement) {
-    yearElement.textContent =
-        new Date().getFullYear();
-}
-
-
-/* =====================================================
-   4. SMOOTH SCROLL HELPER
-===================================================== */
-
-function scrollToSection(id) {
-
-    const section =
-        document.getElementById(id);
-
-    if (!section) return;
-
-    section.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-}
-
-
-/* =====================================================
-   5. TOAST MESSAGE
-===================================================== */
-
-let toastTimer = null;
-
-function showToast(message) {
-
-    if (!toast || !toastMessage) return;
-
-    toastMessage.textContent = message;
-
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2800);
-}
-
-
-/* =====================================================
-   6. ENTER CELEBRATION BUTTON
-===================================================== */
-
-if (enterCelebration) {
-
-    enterCelebration.addEventListener("click", () => {
-
-        scrollToSection("celebration");
-
-        createConfetti(80);
-
-        createPetalShower(25);
-
-        showToast(
-            "🙏 Ganpati Bappa Morya! Welcome to the celebration!"
-        );
-
-    });
-
-}
-
-
-/* =====================================================
-   7. BLESSINGS BUTTON
-===================================================== */
-
-if (blessingsButton) {
-
-    blessingsButton.addEventListener("click", () => {
-
-        scrollToSection("blessings");
-
-        showToast(
-            "✨ May Bappa bless you with wisdom, happiness and prosperity."
-        );
-
-    });
-
-}
-
-
-/* =====================================================
-   8. FLOWER / PETAL SHOWER
-===================================================== */
-
-function createPetalShower(amount = 30) {
-
-    if (!petalsContainer) return;
-
-    const symbols = [
-        "🌸",
-        "🌺",
-        "🌼",
-        "🪷",
-        "🌹",
-        "✨"
-    ];
-
-    for (let i = 0; i < amount; i++) {
-
-        const petal =
-            document.createElement("span");
-
-        petal.className = "falling-petal";
-
-        petal.textContent =
-            symbols[
-                Math.floor(
-                    Math.random() * symbols.length
-                )
-            ];
-
-        petal.style.left =
-            Math.random() * 100 + "vw";
-
-        petal.style.fontSize =
-            (10 + Math.random() * 18) + "px";
-
-        petal.style.animationDuration =
-            (4 + Math.random() * 5) + "s";
-
-        petal.style.animationDelay =
-            Math.random() * 2 + "s";
-
-        petal.style.setProperty(
-            "--drift",
-            ((Math.random() - 0.5) * 180) + "px"
-        );
-
-        petalsContainer.appendChild(petal);
-
-        setTimeout(() => {
-
-            petal.remove();
-
-        }, 10000);
-
+        }, 1300);
     }
-}
+
+    hideLoader();
 
 
-/* =====================================================
-   9. FLOWER BUTTON
-===================================================== */
+    /* =====================================================
+       SMOOTH SCROLL
+    ===================================================== */
 
-if (flowerButton) {
+    function scrollToSection(id) {
 
-    flowerButton.addEventListener("click", () => {
+        const section = document.getElementById(id);
 
-        createPetalShower(45);
+        if (!section) return;
 
-        showToast(
-            "🌸 Flowers of devotion are showering for Bappa!"
-        );
-
-    });
-
-}
-
-
-/* =====================================================
-   10. CONFETTI SYSTEM
-===================================================== */
-
-function createConfetti(amount = 100) {
-
-    const confettiColors = [
-        "#ffd76a",
-        "#ffb347",
-        "#fff0b8",
-        "#e86b28",
-        "#ffffff"
-    ];
-
-    for (let i = 0; i < amount; i++) {
-
-        const piece =
-            document.createElement("div");
-
-        piece.className = "confetti-piece";
-
-        piece.style.left =
-            Math.random() * 100 + "vw";
-
-        piece.style.top =
-            (-20 - Math.random() * 80) + "px";
-
-        piece.style.width =
-            (5 + Math.random() * 7) + "px";
-
-        piece.style.height =
-            (8 + Math.random() * 12) + "px";
-
-        piece.style.background =
-            confettiColors[
-                Math.floor(
-                    Math.random() *
-                    confettiColors.length
-                )
-            ];
-
-        piece.style.animationDuration =
-            (3 + Math.random() * 3) + "s";
-
-        piece.style.animationDelay =
-            Math.random() * 1.5 + "s";
-
-        piece.style.transform =
-            `rotate(${Math.random() * 360}deg)`;
-
-        document.body.appendChild(piece);
-
-        setTimeout(() => {
-
-            piece.remove();
-
-        }, 7000);
-
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     }
-}
 
 
-/* =====================================================
-   11. CONFETTI BUTTON
-===================================================== */
+    /* =====================================================
+       TOAST
+    ===================================================== */
 
-if (confettiButton) {
+    let toastTimer;
 
-    confettiButton.addEventListener("click", () => {
+    function showToast(message) {
 
-        createConfetti(150);
+        if (!toast || !toastMessage) return;
 
-        showToast(
-            "🎉 Ganpati Bappa Morya! Celebration begins!"
-        );
+        toastMessage.textContent = message;
 
-    });
+        toast.classList.add("show");
 
-}
+        clearTimeout(toastTimer);
 
-
-/* =====================================================
-   12. BLESSING POPUP
-===================================================== */
-
-function openBlessingPopup() {
-
-    if (!blessingPopup) return;
-
-    blessingPopup.classList.add("active");
-
-    document.body.classList.add("popup-open");
-
-}
-
-function closeBlessingPopup() {
-
-    if (!blessingPopup) return;
-
-    blessingPopup.classList.remove("active");
-
-    document.body.classList.remove("popup-open");
-
-}
-
-
-/* =====================================================
-   13. POPUP BUTTON
-===================================================== */
-
-if (blessingPopupButton) {
-
-    blessingPopupButton.addEventListener(
-        "click",
-        openBlessingPopup
-    );
-
-}
-
-
-if (closePopup) {
-
-    closePopup.addEventListener(
-        "click",
-        closeBlessingPopup
-    );
-
-}
-
-
-/* =====================================================
-   14. CLICK OUTSIDE POPUP
-===================================================== */
-
-if (blessingPopup) {
-
-    blessingPopup.addEventListener(
-        "click",
-        (event) => {
-
-            if (
-                event.target === blessingPopup
-            ) {
-
-                closeBlessingPopup();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   15. ESCAPE KEY
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (event.key === "Escape") {
-
-            closeBlessingPopup();
-
-        }
-
+        toastTimer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 3000);
     }
-);
 
 
-/* =====================================================
-   16. POPUP CELEBRATE
-===================================================== */
+    /* =====================================================
+       ENTER CELEBRATION
+    ===================================================== */
 
-if (popupCelebrate) {
+    if (enterCelebration) {
 
-    popupCelebrate.addEventListener(
-        "click",
-        () => {
+        enterCelebration.addEventListener("click", () => {
 
-            createConfetti(120);
+            scrollToSection("celebration");
 
-            createPetalShower(35);
+            createPetalShower(18);
 
-            closeBlessingPopup();
+            setTimeout(() => {
+                createConfetti(35);
+            }, 400);
 
-            showToast(
-                "🙏 गणपति बप्पा मोरया! मंगल मूर्ति मोरया!"
-            );
-
-        }
-    );
-
-}
+            showToast("🙏 Ganpati Bappa Morya! ❤️");
+        });
+    }
 
 
-/* =====================================================
-   17. FINAL CELEBRATION
-===================================================== */
+    /* =====================================================
+       BLESSINGS BUTTON
+    ===================================================== */
 
-if (finalCelebrateButton) {
+    if (blessingsButton) {
 
-    finalCelebrateButton.addEventListener(
-        "click",
-        () => {
+        blessingsButton.addEventListener("click", () => {
 
-            createConfetti(200);
+            scrollToSection("blessings");
 
-            createPetalShower(60);
-
-            openBlessingPopup();
-
-            showToast(
-                "🪔 Bappa's blessings are always with you!"
-            );
-
-        }
-    );
-
-}
+            showToast("✨ Bappa ki blessings aapke saath rahein!");
+        });
+    }
 
 
-/* =====================================================
-   18. NAVBAR SCROLL EFFECT
-===================================================== */
+    /* =====================================================
+       NAVBAR SCROLL EFFECT
+    ===================================================== */
 
-const navbar =
-    document.querySelector(".navbar");
-
-window.addEventListener(
-    "scroll",
-    () => {
+    function updateNavbar() {
 
         if (!navbar) return;
 
-        if (window.scrollY > 50) {
-
+        if (window.scrollY > 40) {
             navbar.classList.add("scrolled");
-
         } else {
-
             navbar.classList.remove("scrolled");
-
         }
-
-    },
-    { passive: true }
-);
-
-
-/* =====================================================
-   19. ACTIVE NAVIGATION
-===================================================== */
-
-const navLinks =
-    document.querySelectorAll(
-        ".nav-links a"
-    );
-
-navLinks.forEach(link => {
-
-    link.addEventListener(
-        "click",
-        () => {
-
-            navLinks.forEach(item => {
-                item.classList.remove("active");
-            });
-
-            link.classList.add("active");
-
-        }
-    );
-
-});
-
-
-/* =====================================================
-   20. PARTICLE CANVAS
-===================================================== */
-
-if (canvas) {
-
-    const ctx =
-        canvas.getContext("2d");
-
-    let particles = [];
-
-    let animationFrame;
-
-
-    function resizeCanvas() {
-
-        canvas.width =
-            window.innerWidth;
-
-        canvas.height =
-            window.innerHeight;
-
     }
 
+    window.addEventListener("scroll", updateNavbar);
 
-    window.addEventListener(
-        "resize",
-        resizeCanvas
-    );
-
-    resizeCanvas();
+    updateNavbar();
 
 
-    function createParticle() {
+    /* =====================================================
+       PETAL SHOWER
+    ===================================================== */
 
-        return {
+    function createPetalShower(amount = 25) {
 
-            x:
-                Math.random() *
-                canvas.width,
+        if (!petalsContainer) return;
 
-            y:
-                Math.random() *
-                canvas.height,
+        for (let i = 0; i < amount; i++) {
 
-            size:
-                Math.random() * 2.2 + 0.4,
+            const petal = document.createElement("div");
 
-            speedX:
-                (Math.random() - 0.5) * 0.25,
+            petal.className = "petal";
 
-            speedY:
-                (Math.random() - 0.5) * 0.25,
+            const size =
+                Math.random() * 14 + 8;
 
-            opacity:
-                Math.random() * 0.7 + 0.15,
+            const left =
+                Math.random() * 100;
 
-            twinkle:
-                Math.random() * 0.02 + 0.005
+            const duration =
+                Math.random() * 4 + 5;
 
-        };
+            const delay =
+                Math.random() * 2;
 
-    }
+            const drift =
+                (Math.random() * 160) - 80;
 
+            petal.style.width = `${size}px`;
 
-    function initParticles() {
+            petal.style.height = `${size * 1.45}px`;
 
-        particles = [];
+            petal.style.left = `${left}%`;
 
-        const count =
-            Math.min(
-                120,
-                Math.floor(
-                    window.innerWidth / 9
-                )
+            petal.style.animationDuration =
+                `${duration}s`;
+
+            petal.style.animationDelay =
+                `${delay}s`;
+
+            petal.style.setProperty(
+                "--drift",
+                `${drift}px`
             );
 
-        for (
-            let i = 0;
-            i < count;
-            i++
-        ) {
+            petalsContainer.appendChild(petal);
 
-            particles.push(
-                createParticle()
-            );
+            setTimeout(() => {
 
-        }
-
-    }
-
-
-    function drawParticles() {
-
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
-
-
-        particles.forEach(particle => {
-
-            particle.x +=
-                particle.speedX;
-
-            particle.y +=
-                particle.speedY;
-
-
-            if (particle.x < 0)
-                particle.x =
-                    canvas.width;
-
-            if (particle.x > canvas.width)
-                particle.x = 0;
-
-            if (particle.y < 0)
-                particle.y =
-                    canvas.height;
-
-            if (particle.y > canvas.height)
-                particle.y = 0;
-
-
-            particle.opacity +=
-                particle.twinkle;
-
-
-            if (
-                particle.opacity >= 0.9 ||
-                particle.opacity <= 0.1
-            ) {
-
-                particle.twinkle *= -1;
-
-            }
-
-
-            ctx.beginPath();
-
-            ctx.arc(
-                particle.x,
-                particle.y,
-                particle.size,
-                0,
-                Math.PI * 2
-            );
-
-            ctx.fillStyle =
-                `rgba(245,199,106,${particle.opacity})`;
-
-            ctx.fill();
-
-        });
-
-
-        animationFrame =
-            requestAnimationFrame(
-                drawParticles
-            );
-
-    }
-
-
-    initParticles();
-
-    drawParticles();
-
-
-    window.addEventListener(
-        "resize",
-        initParticles
-    );
-
-}
-
-
-/* =====================================================
-   21. MUSIC SYSTEM
-===================================================== */
-
-let musicPlaying = false;
-
-
-/*
-   IMPORTANT:
-   Your HTML audio element currently has no song source.
-   So this code safely handles the button.
-*/
-
-if (musicButton) {
-
-    musicButton.addEventListener(
-        "click",
-        async () => {
-
-            if (!devotionalAudio) {
-
-                showToast(
-                    "🎵 Add a devotional song to enable music."
-                );
-
-                return;
-
-            }
-
-
-            if (
-                !devotionalAudio.src ||
-                devotionalAudio.src ===
-                window.location.href
-            ) {
-
-                showToast(
-                    "🎵 Music is ready — add your devotional audio file first."
-                );
-
-                return;
-
-            }
-
-
-            try {
-
-                if (musicPlaying) {
-
-                    devotionalAudio.pause();
-
-                    musicPlaying = false;
-
-                    musicButton.classList.remove(
-                        "playing"
-                    );
-
-                    showToast(
-                        "🔇 Music paused"
-                    );
-
-                } else {
-
-                    await devotionalAudio.play();
-
-                    musicPlaying = true;
-
-                    musicButton.classList.add(
-                        "playing"
-                    );
-
-                    showToast(
-                        "🎵 Devotional music playing"
-                    );
-
+                if (petal.parentNode) {
+                    petal.remove();
                 }
 
-            } catch (error) {
-
-                showToast(
-                    "🎵 Tap again after adding a valid music file."
-                );
-
-            }
-
+            }, (duration + delay) * 1000 + 500);
         }
-    );
-
-}
+    }
 
 
-/* =====================================================
-   22. AUDIO ENDED
-===================================================== */
+    /* =====================================================
+       FLOWER BUTTON
+    ===================================================== */
 
-if (devotionalAudio) {
+    if (flowerButton) {
 
-    devotionalAudio.addEventListener(
-        "ended",
-        () => {
+        flowerButton.addEventListener("click", () => {
 
-            musicPlaying = false;
+            createPetalShower(45);
 
-            if (musicButton) {
+            showToast("🌸 Bappa ke charno mein pushp arpan!");
+        });
+    }
 
-                musicButton.classList.remove(
-                    "playing"
-                );
 
-            }
+    /* =====================================================
+       CONFETTI
+    ===================================================== */
 
+    function createConfetti(amount = 50) {
+
+        const container =
+            document.body;
+
+        for (let i = 0; i < amount; i++) {
+
+            const piece =
+                document.createElement("div");
+
+            piece.className =
+                "confetti-piece";
+
+            const left =
+                Math.random() * 100;
+
+            const size =
+                Math.random() * 7 + 5;
+
+            const duration =
+                Math.random() * 2.5 + 3;
+
+            const delay =
+                Math.random() * 1.5;
+
+            piece.style.left =
+                `${left}%`;
+
+            piece.style.width =
+                `${size}px`;
+
+            piece.style.height =
+                `${size * 1.8}px`;
+
+            piece.style.animationDuration =
+                `${duration}s`;
+
+            piece.style.animationDelay =
+                `${delay}s`;
+
+            piece.style.transform =
+                `rotate(${Math.random() * 360}deg)`;
+
+            container.appendChild(piece);
+
+            setTimeout(() => {
+
+                if (piece.parentNode) {
+                    piece.remove();
+                }
+
+            }, (duration + delay) * 1000 + 500);
         }
-    );
-
-}
+    }
 
 
-/* =====================================================
-   23. RANDOM FLOATING PETALS
-===================================================== */
+    /* =====================================================
+       CONFETTI BUTTON
+    ===================================================== */
 
-function automaticPetals() {
+    if (confettiButton) {
 
-    createPetalShower(2);
+        confettiButton.addEventListener("click", () => {
 
-}
+            createConfetti(80);
 
-setInterval(
-    automaticPetals,
-    4500
-);
+            showToast("🎉 Ganpati celebration begins!");
+        });
+    }
 
 
-/* =====================================================
-   24. PREVENT BUTTON DOUBLE TAP
-===================================================== */
+    /* =====================================================
+       POPUP OPEN
+    ===================================================== */
 
-document
-    .querySelectorAll("button")
-    .forEach(button => {
+    function openBlessingPopup() {
 
-        button.addEventListener(
-            "pointerdown",
-            () => {
+        if (!popup) return;
 
-                button.style.transform =
-                    "scale(0.97)";
+        popup.classList.add("active");
 
-            }
+        popup.setAttribute(
+            "aria-hidden",
+            "false"
         );
 
+        document.body.style.overflow = "hidden";
+    }
 
-        button.addEventListener(
-            "pointerup",
-            () => {
 
-                setTimeout(() => {
+    /* =====================================================
+       POPUP CLOSE
+    ===================================================== */
 
-                    button.style.transform = "";
+    function closeBlessingPopup() {
 
-                }, 100);
+        if (!popup) return;
 
-            }
+        popup.classList.remove("active");
+
+        popup.setAttribute(
+            "aria-hidden",
+            "true"
         );
 
+        document.body.style.overflow = "";
+    }
 
-        button.addEventListener(
-            "pointercancel",
-            () => {
 
-                button.style.transform = "";
+    /* =====================================================
+       POPUP BUTTON
+    ===================================================== */
 
-            }
+    if (blessingPopupButton) {
+
+        blessingPopupButton.addEventListener(
+            "click",
+            openBlessingPopup
         );
+    }
 
+
+    /* =====================================================
+       CLOSE BUTTON
+    ===================================================== */
+
+    if (closePopup) {
+
+        closePopup.addEventListener(
+            "click",
+            closeBlessingPopup
+        );
+    }
+
+
+    /* =====================================================
+       CLICK OUTSIDE POPUP
+    ===================================================== */
+
+    if (popup) {
+
+        popup.addEventListener("click", (event) => {
+
+            if (event.target === popup) {
+                closeBlessingPopup();
+            }
+        });
+    }
+
+
+    /* =====================================================
+       ESCAPE KEY
+    ===================================================== */
+
+    document.addEventListener("keydown", (event) => {
+
+        if (event.key === "Escape") {
+            closeBlessingPopup();
+        }
     });
 
 
-/* =====================================================
-   25. INITIAL WELCOME EFFECT
-===================================================== */
+    /* =====================================================
+       POPUP CELEBRATE
+    ===================================================== */
 
-setTimeout(() => {
+    if (popupCelebrate) {
 
-    createPetalShower(12);
+        popupCelebrate.addEventListener("click", () => {
 
-}, 1000);
+            closeBlessingPopup();
+
+            createPetalShower(30);
+
+            setTimeout(() => {
+                createConfetti(70);
+            }, 300);
+
+            showToast(
+                "🙏 Ganpati Bappa Morya! Sukh Samriddhi aaye!"
+            );
+        });
+    }
 
 
-/* =====================================================
-   26. CONSOLE
-===================================================== */
+    /* =====================================================
+       FINAL CELEBRATION
+    ===================================================== */
 
-console.log(
-    "%c🙏 GANPATI BAPPA MORIYA 🙏",
-    "font-size:20px;font-weight:bold;"
-);
+    if (finalCelebrateButton) {
 
-console.log(
-    "%cPremium Ganesh Chaturthi Website Loaded",
-    "font-size:14px;"
-);
+        finalCelebrateButton.addEventListener(
+            "click",
+            () => {
+
+                createPetalShower(55);
+
+                setTimeout(() => {
+                    createConfetti(100);
+                }, 300);
+
+                showToast(
+                    "❤️ Ganpati Bappa Morya! ❤️"
+                );
+
+                finalCelebrateButton.classList.add(
+                    "celebrate-click"
+                );
+
+                setTimeout(() => {
+
+                    finalCelebrateButton.classList.remove(
+                        "celebrate-click"
+                    );
+
+                }, 700);
+            }
+        );
+    }
+
+
+    /* =====================================================
+       MUSIC BUTTON
+    ===================================================== */
+
+    if (musicButton) {
+
+        musicButton.addEventListener(
+            "click",
+            async () => {
+
+                /*
+                   Audio element mein abhi source nahi diya gaya.
+                   Isliye user ko clear message milega.
+                */
+
+                if (
+                    !devotionalAudio ||
+                    !devotionalAudio.src
+                ) {
+
+                    showToast(
+                        "🎵 Music link abhi add nahi kiya gaya."
+                    );
+
+                    return;
+                }
+
+                try {
+
+                    if (devotionalAudio.paused) {
+
+                        await devotionalAudio.play();
+
+                        musicButton.classList.add(
+                            "playing"
+                        );
+
+                        showToast(
+                            "🎵 Ganpati bhajan playing..."
+                        );
+
+                    } else {
+
+                        devotionalAudio.pause();
+
+                        musicButton.classList.remove(
+                            "playing"
+                        );
+
+                        showToast(
+                            "🔇 Music paused"
+                        );
+                    }
+
+                } catch (error) {
+
+                    showToast(
+                        "🎵 Music play nahi ho paaya."
+                    );
+                }
+            }
+        );
+    }
+
+
+    /* =====================================================
+       PARTICLE CANVAS
+    ===================================================== */
+
+    if (canvas) {
+
+        const ctx =
+            canvas.getContext("2d");
+
+        let particles = [];
+
+        let width = 0;
+        let height = 0;
+
+
+        /* -----------------------------------------------
+           RESIZE
+        ------------------------------------------------ */
+
+        function resizeCanvas() {
+
+            width =
+                window.innerWidth;
+
+            height =
+                window.innerHeight;
+
+            canvas.width =
+                width * window.devicePixelRatio;
+
+            canvas.height =
+                height * window.devicePixelRatio;
+
+            canvas.style.width =
+                `${width}px`;
+
+            canvas.style.height =
+                `${height}px`;
+
+            ctx.setTransform(
+                window.devicePixelRatio,
+                0,
+                0,
+                window.devicePixelRatio,
+                0,
+                0
+            );
+        }
+
+
+        /* -----------------------------------------------
+           PARTICLE
+        ------------------------------------------------ */
+
+        class Particle {
+
+            constructor() {
+
+                this.x =
+                    Math.random() * width;
+
+                this.y =
+                    Math.random() * height;
+
+                this.radius =
+                    Math.random() * 1.8 + 0.4;
+
+                this.speedX =
+                    (Math.random() - 0.5) * 0.35;
+
+                this.speedY =
+                    (Math.random() - 0.5) * 0.35;
+
+                this.alpha =
+                    Math.random() * 0.6 + 0.2;
+            }
+
+
+            update() {
+
+                this.x += this.speedX;
+
+                this.y += this.speedY;
+
+
+                if (this.x < 0) {
+                    this.x = width;
+                }
+
+                if (this.x > width) {
+                    this.x = 0;
+                }
+
+                if (this.y < 0) {
+                    this.y = height;
+                }
+
+                if (this.y > height) {
+                    this.y = 0;
+                }
+            }
+
+
+            draw() {
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    this.x,
+                    this.y,
+                    this.radius,
+                    0,
+                    Math.PI * 2
+                );
+
+                ctx.fillStyle =
+                    `rgba(255, 215, 120, ${this.alpha})`;
+
+                ctx.fill();
+            }
+        }
+
+
+        /* -----------------------------------------------
+           CREATE PARTICLES
+        ------------------------------------------------ */
+
+        function createParticles() {
+
+            particles = [];
+
+            const amount =
+                Math.min(
+                    100,
+                    Math.floor(
+                        (width * height) / 14000
+                    )
+                );
+
+            for (
+                let i = 0;
+                i < amount;
+                i++
+            ) {
+
+                particles.push(
+                    new Particle()
+                );
+            }
+        }
+
+
+        /* -----------------------------------------------
+           ANIMATION
+        ------------------------------------------------ */
+
+        function animateParticles() {
+
+            ctx.clearRect(
+                0,
+                0,
+                width,
+                height
+            );
+
+            particles.forEach(
+                particle => {
+
+                    particle.update();
+
+                    particle.draw();
+
+                }
+            );
+
+            requestAnimationFrame(
+                animateParticles
+            );
+        }
+
+
+        /* -----------------------------------------------
+           INIT
+        ------------------------------------------------ */
+
+        resizeCanvas();
+
+        createParticles();
+
+        animateParticles();
+
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                resizeCanvas();
+
+                createParticles();
+
+            }
+        );
+    }
+
+
+    /* =====================================================
+       BUTTON PRESS EFFECT
+    ===================================================== */
+
+    const allButtons =
+        document.querySelectorAll("button");
+
+    allButtons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                button.classList.add(
+                    "button-pressed"
+                );
+
+                setTimeout(() => {
+
+                    button.classList.remove(
+                        "button-pressed"
+                    );
+
+                }, 180);
+            }
+        );
+    });
+
+
+    /* =====================================================
+       GANESHA IMAGE EFFECT
+    ===================================================== */
+
+    const ganeshaImage =
+        document.getElementById("ganeshaImage");
+
+    const ganeshaContainer =
+        document.getElementById("ganeshaContainer");
+
+    if (
+        ganeshaImage &&
+        ganeshaContainer
+    ) {
+
+        ganeshaImage.addEventListener(
+            "mouseenter",
+            () => {
+
+                ganeshaContainer.classList.add(
+                    "ganesha-hover"
+                );
+            }
+        );
+
+        ganeshaImage.addEventListener(
+            "mouseleave",
+            () => {
+
+                ganeshaContainer.classList.remove(
+                    "ganesha-hover"
+                );
+            }
+        );
+    }
+
+
+    /* =====================================================
+       BLESSING CARD INTERACTION
+    ===================================================== */
+
+    const blessingCards =
+        document.querySelectorAll(
+            ".blessing-card"
+        );
+
+    blessingCards.forEach(card => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                card.classList.add(
+                    "card-active"
+                );
+
+                setTimeout(() => {
+
+                    card.classList.remove(
+                        "card-active"
+                    );
+
+                }, 500);
+
+                showToast(
+                    "✨ Bappa ki kripa bani rahe!"
+                );
+            }
+        );
+    });
+
+
+    /* =====================================================
+       RANDOM INITIAL PARTICLES / PETALS
+    ===================================================== */
+
+    setTimeout(() => {
+
+        createPetalShower(8);
+
+    }, 1800);
+
+
+    /* =====================================================
+       CONSOLE
+    ===================================================== */
+
+    console.log(
+        "%c🙏 Ganpati Bappa Morya! 🙏",
+        "font-size:20px;font-weight:bold;"
+    );
+
+    console.log(
+        "Premium Ganesh Chaturthi Website Loaded Successfully."
+    );
+
+});
