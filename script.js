@@ -477,67 +477,28 @@ document.addEventListener("DOMContentLoaded", () => {
        MUSIC BUTTON
     ===================================================== */
 
-    if (musicButton) {
+if (musicButton && devotionalAudio) {
+    musicButton.addEventListener("click", async () => {
 
-        musicButton.addEventListener(
-            "click",
-            async () => {
+        try {
+            if (devotionalAudio.paused) {
+                await devotionalAudio.play();
 
-                /*
-                   Audio element mein abhi source nahi diya gaya.
-                   Isliye user ko clear message milega.
-                */
+                musicButton.classList.add("playing");
+                showToast("🎵 Ganpati music playing...");
+            } else {
+                devotionalAudio.pause();
 
-                if (
-                    !devotionalAudio ||
-                    !devotionalAudio.src
-                ) {
-
-                    showToast(
-                        "🎵 Music link abhi add nahi kiya gaya."
-                    );
-
-                    return;
-                }
-
-                try {
-
-                    if (devotionalAudio.paused) {
-
-                        await devotionalAudio.play();
-
-                        musicButton.classList.add(
-                            "playing"
-                        );
-
-                        showToast(
-                            "🎵 Ganpati bhajan playing..."
-                        );
-
-                    } else {
-
-                        devotionalAudio.pause();
-
-                        musicButton.classList.remove(
-                            "playing"
-                        );
-
-                        showToast(
-                            "🔇 Music paused"
-                        );
-                    }
-
-                } catch (error) {
-
-                    showToast(
-                        "🎵 Music play nahi ho paaya."
-                    );
-                }
+                musicButton.classList.remove("playing");
+                showToast("🔇 Music paused");
             }
-        );
-    }
 
-
+        } catch (error) {
+            console.error(error);
+            showToast("❌ Song load nahi ho raha");
+        }
+    });
+}
     /* =====================================================
        PARTICLE CANVAS
     ===================================================== */
